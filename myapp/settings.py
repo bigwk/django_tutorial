@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+from config import Config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'bs873jrj1z$+m*g6_&mj)wm)6*)1mf_c!c^kki6af)*$-feus9'
+SECRET_KEY = Config.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = Config.debug
 
 ALLOWED_HOSTS = []
 
@@ -73,16 +73,16 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
+engine = 'django.db.backends.{}'.format(Config.database_name)
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_tutorial',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': engine,
+        'NAME': Config.database,
+        'USER': Config.user,
+        'PASSWORD': Config.password,
+        'HOST': Config.host,
+        'PORT': Config.port,
         # 'TIME_ZONE': 'Asia/Shanghai',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Shanghai'
+TIME_ZONE = Config.time_zone
 
 USE_I18N = True
 

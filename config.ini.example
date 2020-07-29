@@ -1,0 +1,14 @@
+[django_settings]
+secret_key =
+debug = true
+
+[database_settings]
+database_name = postgresql
+database = django_tutorial
+user =
+password =
+host = 127.0.0.1
+port = 5432
+
+[timezone_settings]
+time_zone = Asia/Shanghai
