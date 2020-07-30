@@ -1,6 +1,8 @@
 # django 小项目
 
 ## update
+* 使用`django template`
+
 * 优化配置文件
 
 设置`django settings`从配置文件读取。
